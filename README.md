@@ -57,7 +57,7 @@ python cliputils.py -v -s --blockdata -c test.clip
 | バイト数 | 内容 | 説明 |
 |---|---|---|
 | 4 | 整数 | BlockDataBeginChunk のサイズ(自身を含む)。 |
-| 4 | 整数 | uint 文字列長 |
+| 4 | 整数 | 文字列長(19) |
 | - | 可変長2-byte文字列 | 'BlockDataBeginChunk' |
 | 4 | 整数 | ブロックデータインデックス |
 | 12 | ？ | ？ |
@@ -67,13 +67,13 @@ python cliputils.py -v -s --blockdata -c test.clip
 ### BlockDataEndChunk
 | バイト数 | 内容 | 説明 |
 |---|---|---|
-| 4 | 整数 | uint 文字列長 |
+| 4 | 整数 | 文字列長(17) |
 | - | 可変長2-byte文字列 | 'BlockDataEndChunk' |
 
 ### BlockStatus BlockCheckSum
 | バイト数 | 内容 | 説明 |
 |---|---|---|
-| 4 | 整数 | uint 文字列長 |
+| 4 | 整数 | 文字列長 |
 | - | 可変長2-byte文字列 | 'BlockStatus' 'BlockCheckSum' |
 | 28 | ？ | ？ |
 
