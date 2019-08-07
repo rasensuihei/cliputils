@@ -58,15 +58,15 @@ def split_clip(path, outdir, options):
             external_id_str = external_id.decode('UTF-8')
             if options.verbose:
                 print('  {0} ({1})'.format(external_id_str, data_size))
-            if options.datablocks:
-                __read_datablocks(infile, pos2, length, external_id_str, outdir, options)
+            if options.blockdata:
+                __read_blockdata(infile, pos2, length, external_id_str, outdir, options)
                 infile.seek(pos2)
             else:
                 __pipe_file(outdir, external_id_str, infile, data_size)
         pos = infile.seek(pos + length)
     infile.close()
 
-def __read_datablocks(infile, pos, length, external_id, outdir, options):
+def __read_blockdata(infile, pos, length, external_id, outdir, options):
     end_pos = pos + length
     while pos < end_pos:
         test_data, pos = __read(block_test_spec, infile, pos)
@@ -116,7 +116,7 @@ def __main():
     parser.add_argument('-v', '--verbose', action='store_true', help='print verbose log')
     parser.add_argument('-s', '--split', action='store_true', help='split operation')
     parser.add_argument('-m', '--merge', action='store_true', help='merge operation')
-    parser.add_argument('--datablocks', action='store_true', help='split datablocks')
+    parser.add_argument('--blockdata', action='store_true', help='split blockdata')
     targets = parser.add_argument_group('targets')
     targets.add_argument('-c', '--clip', type=str, help='clip file')
     targets.add_argument('-d', '--dir', type=str, help='splitted data direcotry')
